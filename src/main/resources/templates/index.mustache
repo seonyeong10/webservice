@@ -12,7 +12,13 @@
                     <a href="/logout" class="btn btn-info active" role="button">Logout</a>
             {{/userName}}
             {{^userName}}
+                <!--
+                    네이버 로그인 URL은 application-oauth.properties에 등록한 redirect-uri 값에 맞춰 자동으로 등록된다.
+                    /oauth/authorization/{path}
+                    path : 소셜 로그인 코드
+                 -->
                 <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                <a href="/oauth2/authorization/naver" class="btn btn-success active" role="button">Naver Login</a>
             {{/userName}}
         </div>
     </div>

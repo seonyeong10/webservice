@@ -5,6 +5,7 @@ import com.webservice.springboot.domain.posts.Posts;
 import com.webservice.springboot.domain.posts.PostsRepository;
 import com.webservice.springboot.web.dto.PostsSaveRequestDto;
 import com.webservice.springboot.web.dto.PostsUpdateRequestDto;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,6 +48,7 @@ public class PostsApiControllerTest {
 
     @Autowired
     private WebApplicationContext context;
+
     private MockMvc mvc;
 
     @Before // 매번 테스트가 시작되기 전에 MockMvc 인스턴스를 생성
@@ -55,6 +57,11 @@ public class PostsApiControllerTest {
                 .webAppContextSetup(context)
                 .apply(springSecurity())
                 .build();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        postsRepository.deleteAll();
     }
 
     @Test
@@ -103,6 +110,7 @@ public class PostsApiControllerTest {
                 .title(expectedTitle)
                 .content(expectedContent)
                 .build();
+
         String url = "http://localhost:" + port + "/api/v1/posts/" + updatedId;
 
         // when
@@ -113,6 +121,8 @@ public class PostsApiControllerTest {
 
         // then
         List<Posts> all = postsRepository.findAll();
+        System.out.println(all.get(0).getTitle());
+        System.out.println(all.get(0).getContent());
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
     }

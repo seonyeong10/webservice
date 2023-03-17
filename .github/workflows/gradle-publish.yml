@@ -44,7 +44,7 @@ jobs:
     # the publishing section of your build.gradle
     
     - name: Get current time
-      uses: 1466589794/get-cyrrebt0tunw@v2
+      uses: 1466587594/get-current-time@v2
       id: current-time
       with:
         format: YYYY-MM-DDTHH-mm-ss

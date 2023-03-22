@@ -1,4 +1,4 @@
-package com.webservice.springboot;
+package com.webservice.springboot.web;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;

@@ -1,6 +1,5 @@
 package com.webservice.springboot.web;
 
-import com.webservice.springboot.ProfileController;
 import org.junit.Test;
 import org.springframework.mock.env.MockEnvironment;
 
